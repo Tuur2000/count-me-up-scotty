@@ -22,6 +22,22 @@ namespace CountMeUpScotty
           Player player = CreatePlayer();
           Game game = new Game(player);
 
+          // Solve challenges
+          // SumChallenge challenge = null;
+          // do {
+          //   challenge = game.NextChallenge();
+          //   Console.WriteLine(challenge);
+          // } while(challenge != null);
+
+          while (!game.IsFinished()) {
+            SumChallenge challenge = game.NextChallenge();
+            Console.WriteLine(challenge);
+            int playerAttempt = Convert.ToInt32(Console.ReadLine());
+            challenge.Solve(playerAttempt);
+          }
+
+          Console.Write(game.Overview());
+
           // Single
           // Console.WriteLine("Here is a challenge:");
           // SumChallenge challenge = new SumChallenge();

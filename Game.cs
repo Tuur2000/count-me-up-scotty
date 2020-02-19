@@ -13,7 +13,32 @@ namespace CountMeUpScotty {
       // currentChallenge++;
       // return challenge;
 
-      return challenges[currentChallenge++];
+      if (!IsFinished()) {
+        return challenges[currentChallenge++];
+      } else {
+        return null;
+      }
+    }
+
+    public bool IsFinished() {
+      return currentChallenge >= challenges.Length;
+    }
+
+    public int Score() {
+      int score = 0;
+      foreach(var challenge in challenges) {
+        score += challenge.Score();
+      }
+      return score;
+    }
+
+    public string Overview() {
+      string output = "Your challenge overview:\n";
+      foreach(var challenge in challenges) {
+        output += challenge + "\n";
+      }
+      output += $"Your score = {Score()}";
+      return output;
     }
 
     private void CreateChallenges() {

@@ -20,8 +20,16 @@ namespace CountMeUpScotty {
       return left + right;
     }
 
-    private bool IsCorrectlySolved() {
+    public bool IsCorrectlySolved() {
       return Solution() == attempt;
+    }
+
+    public int Score() {
+      if (IsCorrectlySolved()) {
+        return 1;
+      } else {
+        return 0;
+      }
     }
 
     public override string ToString() {
